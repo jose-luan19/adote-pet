@@ -14,7 +14,7 @@ services:
     networks:
       - front
 
-  API:
+  api:
     build: ./adote-pet-back
     container_name: api
     restart: always
