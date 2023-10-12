@@ -1,16 +1,9 @@
-## Ambiente virtual .venv
-
-Powershell
-
+## Executando no docker: 
+Após subir o container, em outro terminal, execute:
+```bash
+docker exec api bash -c "python manage.py migrate"
 ```
-.venv\Scripts\Activate.ps1
-```
-
-cmd
-
-```
-.venv\Scripts\activate
-```
+Para executar as migrations e criar as tabelas
 
 ## Instalar django
 
