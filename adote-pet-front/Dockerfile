@@ -15,8 +15,6 @@ RUN npm install -g next
 # Copie todos os arquivos do projeto para o diretório de trabalho
 COPY . .
 
-RUN npm run build
-
 # Exponha a porta em que a aplicação será executada (a porta padrão do Next.js é 3000)
 EXPOSE 3000
 
