@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  front: 
+    build: ./adote-pet-front
+    container_name: front
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./adote-pet-front:/app
+      - /app/node_modules
+      - /app/.next
+    networks:
+      - front
+
+  API:
+    build: ./adote-pet-back
+    container_name: api
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+    networks:
+      - database
+      - front
+    volumes:
+      - ./adote-pet-back:/app
+
+  db:
+    image: mysql
+    container_name: db
+    ports:
+      - 4000:3306
+    networks:
+      - database
+    environment:
+      - MYSQL_DATABASE=pet
+      - MYSQL_ROOT_PASSWORD=root
+
+networks:
+  front:
+  database:
